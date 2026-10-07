@@ -39,7 +39,6 @@ module BoxEcommerce
       }
       etichetta = categoria ? "#{categoria['icona']} #{categoria['nome']}" : ''
       self.content = <<~HTML
-        <link rel="stylesheet" href="#{e.(base)}/assets/css/negozio.css">
         <div id="negozio" data-worker="#{e.(worker)}">
         <div class="nz-riga nz-box nz-scheda" data-id="#{e.(prodotto['id'])}" data-nome="#{e.(prodotto['nome'])}" data-prezzo="#{prodotto['prezzo_centesimi'].to_i}" data-tipo="#{e.(prodotto['tipo'])}" data-periodo="#{e.(BoxEcommerce.periodo(prodotto))}">
         <div class="nz-icona">#{e.(prodotto['icona'])}</div>
@@ -55,7 +54,6 @@ module BoxEcommerce
         </div>
         </div>
         <p><a href="#{e.(base)}/negozio/">&larr; Torna al negozio</a> &middot; <a href="#{e.(base)}/negozio/#carrello">Vai al carrello</a></p>
-        <script src="#{e.(base)}/assets/js/carrello.js" defer></script>
         </div>
       HTML
     end

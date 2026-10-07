@@ -7,7 +7,6 @@ nav: true
 nav_order: 1
 ecommerce: true
 ---
-<link rel="stylesheet" href="{{ '/assets/css/negozio.css' | relative_url }}">
 <div id="negozio" data-worker="{{ site.data.negozio.worker_url }}">
 <div class="nz-pills">
 <button type="button" class="nz-pill on" data-cat="">Tutti</button>
@@ -47,5 +46,4 @@ ecommerce: true
 <button type="button" id="nz-svuota" class="btn btn-outline-secondary">Svuota il carrello</button>
 <p id="nz-nota" class="text-muted mt-2"></p>
 </div>
-<script src="{{ '/assets/js/carrello.js' | relative_url }}" defer></script>
 </div>
