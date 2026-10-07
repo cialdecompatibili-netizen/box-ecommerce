@@ -5,13 +5,15 @@
 # 1) Interruttore = chiave `ecommerce: true|false` in _config.yml (admin > Impostazioni > "Abilita e-commerce").
 #    Attivo SOLO se vale true: chiave assente = spento.
 # 2) Spento = spariscono dalla build (quindi dal menu, dalla sitemap e dagli URL) tutte le pagine con `ecommerce: true`
-#    nel front matter (/negozio/, /grazie/) e le pagine prodotto generate qui. Il codice resta nel repo.
+#    nel front matter (/negozio/, /grazie/), le pagine prodotto generate qui e i file statici del negozio (FILE_STATICI). Il codice resta nel repo.
 # 3) Le pagine prodotto /negozio/<id>/ nascono da _data/catalogo.json (stessa fonte del Worker e dell'admin).
 #    Prodotti con `visibile: false` o id non valido (solo a-z 0-9 e -) vengono saltati.
 # 4) Nuove pagine del negozio: mettere `ecommerce: true` nel front matter, altrimenti restano online a e-commerce spento.
 require 'cgi'
 
 module BoxEcommerce
+  FILE_STATICI = %w[assets/js/carrello.js assets/css/negozio.css].freeze
+
   def self.attivo?(site)
     site.config['ecommerce'] == true
   end
@@ -78,9 +80,11 @@ module BoxEcommerce
   end
 end
 
-# E-commerce spento: via dalla build le pagine marcate `ecommerce: true` (negozio, grazie). Spariscono anche dal menu.
+# E-commerce spento: via dalla build le pagine marcate `ecommerce: true` (negozio, grazie) e i file statici del negozio (carrello.js, negozio.css).
+# Spariscono anche dal menu, dalla sitemap e dagli URL. Nuovi file statici del negozio: aggiungili a FILE_STATICI.
 Jekyll::Hooks.register :site, :post_read do |site|
   next if BoxEcommerce.attivo?(site)
 
   site.pages.reject! { |p| p.data['ecommerce'] }
+  site.static_files.reject! { |f| BoxEcommerce::FILE_STATICI.include?(f.relative_path.sub(%r{\A/}, '')) }
 end
