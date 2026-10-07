@@ -1,0 +1,13 @@
+name = "box-ecommerce"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+# SITO_URL deve finire con "/". SEGRETI (non qui) con wrangler secret put.
+[vars]
+SITO_ORIGIN = "https://cialdecompatibili-netizen.github.io"
+SITO_URL = "https://cialdecompatibili-netizen.github.io/box-ecommerce/"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "box-ecommerce"
+database_id = "DA_CREARE"  # sostituire con l'id stampato da: npx wrangler d1 create box-ecommerce
