@@ -1,0 +1,29 @@
+/* Negozio (E-commerce): elenco prodotti a righe, filtro categorie, carrello. Colori dal tema (variabili del sito, con ripiego).
+   PUNTO CRITICO: e' un file statico caricato con <link> da _pages/negozio.md e dalle pagine prodotto (_plugins/ecommerce.rb). */
+#negozio { --nz-bordo: var(--global-divider-color, #dee2e6); --nz-sfondo: var(--global-card-bg-color, #fff); --nz-testo: var(--global-text-color, #212529); --nz-tema: var(--global-theme-color, #b509ac); --nz-muto: var(--global-text-color-light, #6c757d); }
+#negozio .nz-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+#negozio .nz-pill { border: 1px solid var(--nz-bordo); background: transparent; color: var(--nz-testo); border-radius: 999px; padding: .25rem .8rem; cursor: pointer; font-size: .9rem; }
+#negozio .nz-pill.on { background: var(--nz-tema); border-color: var(--nz-tema); color: #fff; }
+#negozio .nz-lista { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 2rem; }
+#negozio .nz-riga { display: flex; gap: 1rem; align-items: center; padding: .9rem 1rem; border: 1px solid var(--nz-bordo); border-radius: 12px; background: var(--nz-sfondo); }
+#negozio .nz-riga[hidden] { display: none; }
+#negozio .nz-icona { flex: 0 0 3.2rem; height: 3.2rem; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; border-radius: 12px; border: 1px solid var(--nz-bordo); }
+#negozio .nz-testo { flex: 1 1 auto; min-width: 0; }
+#negozio .nz-testo h3 { margin: 0 0 .15rem; font-size: 1.1rem; }
+#negozio .nz-testo h3 a { color: var(--nz-testo); text-decoration: none; }
+#negozio .nz-testo h3 a:hover { color: var(--nz-tema); }
+#negozio .nz-testo p { margin: 0; }
+#negozio .nz-cat { color: var(--nz-muto); font-size: .8rem; }
+#negozio .nz-prezzo { white-space: nowrap; }
+#negozio .nz-azioni { display: flex; gap: .5rem; align-items: flex-end; flex-wrap: wrap; justify-content: flex-end; }
+#negozio .nz-azioni label { margin: 0; font-size: .8rem; }
+#negozio .nz-qta { width: 4.5rem; }
+#negozio .nz-ok { color: var(--nz-tema); font-size: .85rem; align-self: center; }
+#negozio .nz-tab { width: 100%; margin-bottom: 1rem; }
+#negozio .nz-tab td, #negozio .nz-tab th { padding: .4rem .5rem; vertical-align: middle; border-bottom: 1px solid var(--nz-bordo); }
+#negozio .nz-q { display: inline-flex; gap: .35rem; align-items: center; }
+#negozio .nz-totale { font-size: 1.25rem; font-weight: 700; }
+@media (max-width: 640px) {
+  #negozio .nz-riga { flex-wrap: wrap; }
+  #negozio .nz-azioni { width: 100%; justify-content: flex-start; }
+}
