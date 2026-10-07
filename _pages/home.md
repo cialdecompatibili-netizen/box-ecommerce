@@ -17,8 +17,8 @@ latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
-seo_title: "{title} | Smart Web Agency"
-seo_description: "Web agency a Roma dal 2013: siti web, e-commerce, SEO, Google Ads e brand identity su misura per imprenditori, start up e PA. Prima consulenza gratuita, risposta entro 24 ore."
+seo_title: "{title} | Box ricorrenti in abbonamento"
+seo_description: "Box ricorrenti in abbonamento a casa tua. Dispensa italiana, caffè e tè, casa eco e benessere, con pausa o disdetta quando vuoi."
 ---
 
 <style>
@@ -76,13 +76,13 @@ html[data-theme="dark"] .prj-home-more a{border-color:rgba(255,255,255,.3)}
 <!-- ===== MARTE END (html) ===== -->
 <canvas id="rete-cv" aria-hidden="true"></canvas>
 
-## Web Agency a Roma dal 2013, al fianco della crescita del tuo business.
+## Box ricorrenti, scelte per te e consegnate a casa.
 
-Comunicazione, web marketing e sviluppo di piattaforme digitali: aiutiamo imprenditori, start up e grandi aziende a crescere, nel privato come nella Pubblica Amministrazione. Ogni progetto nasce da un'analisi su misura del business e degli obiettivi, combinando creatività e concretezza per ottenere risultati misurabili.
+Scegli la tua box, decidi ogni quanto riceverla e lascia il resto a noi. Prodotti selezionati, spedizione in tutta Italia, pausa o disdetta quando vuoi.
 
-Un team unico di professionisti coordina ogni fase, dalla strategia al risultato: siti, e-commerce, campagne, brand identity e applicativi su misura. Rispondiamo entro 24 ore, festivi esclusi, e la prima consulenza è gratuita.
+Puoi scegliere una box a sorpresa per scoprire cose nuove, oppure una box di ricarica con i prodotti che usi sempre. Per un regalo o per l'ufficio c'è l'abbonamento su misura.
 
-**Vuoi far crescere il tuo business?** Scrivici su WhatsApp o richiedi un preventivo: costruiamo insieme la soluzione giusta per te.
+**Vuoi provare una box?** Scrivici e ti consigliamo quella giusta per te, per un regalo o per il tuo team.
 
 </div>
 

@@ -3,7 +3,7 @@ layout: page
 title: chi siamo
 nav: false
 permalink: /chi-siamo/
-description: Web agency a Roma dal 2013. Strategia, siti, e-commerce, campagne e applicativi su misura.
+description: Box ricorrenti in abbonamento con prodotti selezionati, ricariche per la casa, regali e box per le aziende.
 ---
 
 <style>
@@ -41,70 +41,19 @@ html[data-theme="dark"] .cs-num div,html[data-theme="dark"] .cs-card,html[data-t
 
 <div class="cs-hero">
   <span class="cs-eyebrow">Chi siamo</span>
-  <h2>Trasformiamo idee e obiettivi di business in piattaforme digitali che funzionano.</h2>
-  <p>Siamo una web agency di Roma e lavoriamo dal 2013 con imprenditori, start up, grandi aziende e Pubblica Amministrazione. Non vendiamo pacchetti preconfezionati: partiamo dal tuo business, capiamo dove vuoi arrivare e costruiamo il percorso più concreto per arrivarci.</p>
+  <h2>Box ricorrenti, pensate per stare comode nella tua vita.</h2>
+  <p>Selezioniamo prodotti, li impacchettiamo e li spediamo con il ritmo che scegli tu. Una box a sorpresa per scoprire, una di ricarica per non restare mai senza.</p>
   <div class="cs-cta">
-<a class="cs-btn pri" href="{{ '/contatti/' | relative_url }}">Richiedi un preventivo</a>
-<a class="cs-btn" href="{{ '/servizi/' | relative_url }}">Scopri i servizi</a>
-  </div>
-</div>
-
-<div class="cs-num">
-  <div><b>Dal 2013</b><small>a Roma, sul campo</small></div>
-  <div><b>24 ore</b><small>per la nostra risposta*</small></div>
-  <div><b>1° incontro</b><small>di consulenza gratuito</small></div>
-  <div><b>Privato e PA</b><small>esperienza con entrambi</small></div>
-</div>
-<p class="cs-nota">*Festivi esclusi.</p>
-
-<div class="cs-sec">
-  <h2>Come lavoriamo</h2>
-  <p class="cs-sub">Un unico gruppo di professionisti segue il progetto dall'inizio alla fine, così niente passaggi di mano e niente messaggi che si perdono.</p>
-  <div class="cs-grid">
-    <div class="cs-card cs-step"><i>01</i><b>Ascolto e analisi</b><p>Studiamo attività, mercato e concorrenti. Definiamo insieme gli obiettivi e come misurarli.</p></div>
-    <div class="cs-card cs-step"><i>02</i><b>Strategia</b><p>Traduciamo l'analisi in un piano chiaro: priorità, tempi, budget e canali giusti per te.</p></div>
-    <div class="cs-card cs-step"><i>03</i><b>Progetto e sviluppo</b><p>Design, contenuti e tecnologia prendono forma: siti, e-commerce, campagne e applicativi su misura.</p></div>
-    <div class="cs-card cs-step"><i>04</i><b>Misura e migliora</b><p>Guardiamo i numeri, non le impressioni. Ottimizziamo nel tempo per far crescere i risultati.</p></div>
-  </div>
-</div>
-
-<div class="cs-sec">
-  <h2>Cosa facciamo</h2>
-  <p class="cs-sub">Tutto ciò che serve per essere trovati, scelti e ricordati online.</p>
-  <div class="cs-grid">
-    <a class="cs-card" href="{{ '/servizi/' | relative_url }}"><b>Siti e piattaforme</b><p>Siti aziendali, portali e applicativi sviluppati sulle esigenze reali del tuo business.</p></a>
-    <a class="cs-card" href="{{ '/servizi/' | relative_url }}"><b>E-commerce</b><p>Negozi online pensati per vendere, dalla scelta della piattaforma alla crescita.</p></a>
-    <a class="cs-card" href="{{ '/servizi/' | relative_url }}"><b>Web marketing</b><p>SEO, campagne e social per portare le persone giuste sul tuo sito.</p></a>
-    <a class="cs-card" href="{{ '/servizi/' | relative_url }}"><b>Brand identity</b><p>Un'immagine coerente e riconoscibile, dal logo all'esperienza d'uso.</p></a>
-    <a class="cs-card" href="{{ '/servizi/' | relative_url }}"><b>Comunicazione</b><p>Contenuti e messaggi che raccontano chi sei a chi conta davvero.</p></a>
-    <a class="cs-card" href="{{ '/servizi/' | relative_url }}"><b>Consulenza</b><p>Analisi e strategia per decidere dove investire, prima di spendere.</p></a>
-  </div>
-</div>
-
-<div class="cs-sec">
-  <h2>Perché scegliere noi</h2>
-  <div class="cs-grid c2">
-    <div class="cs-card"><b>Analisi su misura</b><p>Ogni progetto nasce dal tuo business e dai tuoi obiettivi, non da un modello standard.</p></div>
-    <div class="cs-card"><b>Creatività e concretezza</b><p>Idee che si vedono e numeri che si leggono: puntiamo a risultati misurabili.</p></div>
-    <div class="cs-card"><b>Un solo interlocutore</b><p>Dalla strategia al risultato, un team coordinato che risponde di tutto il progetto.</p></div>
-    <div class="cs-card"><b>Tempi di risposta certi</b><p>Ti rispondiamo entro 24 ore (festivi esclusi) e la prima consulenza è gratuita.</p></div>
-  </div>
-</div>
-
-<div class="cs-sec">
-  <h2>Per chi lavoriamo</h2>
-  <div class="cs-grid">
-    <div class="cs-card"><b>Imprenditori e PMI</b><p>Portiamo online l'attività e la aiutiamo a crescere con strumenti che si ripagano.</p></div>
-    <div class="cs-card"><b>Start up</b><p>Dal lancio alla scalata: piattaforme flessibili e una comunicazione che parte col piede giusto.</p></div>
-    <div class="cs-card"><b>Grandi aziende e PA</b><p>Progetti strutturati, processi chiari e attenzione a requisiti e continuità.</p></div>
+<a class="cs-btn pri" href="{{ '/contatti/' | relative_url }}">Attiva una box</a>
+<a class="cs-btn" href="{{ '/servizi/' | relative_url }}">Scopri le box</a>
   </div>
 </div>
 
 <div class="cs-final">
-  <h2>Vuoi far crescere il tuo business?</h2>
-  <p>Raccontaci di cosa hai bisogno: costruiamo insieme la soluzione giusta per te. La prima consulenza è gratuita.</p>
+  <h2>Vuoi provare una box?</h2>
+  <p>Scrivici e ti aiutiamo a scegliere quella giusta, per te, per un regalo o per il tuo team.</p>
   <div class="cs-cta">
-<a class="cs-btn pri" href="{{ '/contatti/' | relative_url }}">Richiedi un preventivo</a>
-<a class="cs-btn" href="{{ '/servizi/' | relative_url }}">Scopri i servizi</a>
+<a class="cs-btn pri" href="{{ '/contatti/' | relative_url }}">Attiva una box</a>
+<a class="cs-btn" href="{{ '/servizi/' | relative_url }}">Scopri le box</a>
   </div>
 </div>
