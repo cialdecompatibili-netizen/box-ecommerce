@@ -46,6 +46,8 @@
           3) Il numero e' scritto da assets/js/carrello.js (localStorage): nell'HTML statico e' (0). Lo script e il CSS si caricano QUI, una volta sola,
              e non vanno rimessi nelle singole pagine.
           4) Il link va a /negozio/#carrello (la sezione carrello della pagina Negozio).
+          5) ORDINE NEL DOM (conta per il CSS mobile): brand, <link>, .nz-cartw, <script>, hamburger. <link> e <script> sono fratelli invisibili: i selettori "+" (adiacente)
+             NON funzionano fra carrello e hamburger, si usa "~". Spiegazione completa in negozio.css (blocco MOBILE). Non aggiungere margin-left:auto a entrambi.
         {% endcomment %}
         {% capture nz_cat %}{% for b in site.data.catalogo.box %}{% unless b.visibile == false %}{"id":{{ b.id | jsonify }},"p":{{ b.prezzo_centesimi | default: 0 | jsonify }},"n":{{ b.nome | jsonify }}},{% endunless %}{% endfor %}{% endcapture %}
         <link rel="stylesheet" href="{{ '/assets/css/negozio.css' | relative_url }}">
