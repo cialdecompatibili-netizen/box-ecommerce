@@ -3,8 +3,9 @@
 Cartella con underscore: Jekyll NON la pubblica. Stack: sito statico su GitHub Pages, Worker Cloudflare (checkout + webhook), D1 per gli ordini, Stripe Checkout (abbonamenti mensili e acquisti singoli). Idee e limiti dei piani: `memoria.md` del modello alfoliotemplate1.
 
 ## Cosa c'e'
-- `catalogo.json` prezzi e tipo di ogni box (PREZZI DI PROVA).
-- `worker/src/index.js` API: `GET /api/box`, `POST /api/checkout` (body `{"id":"caffe-e-te"}` -> `{"url": ...}` di Stripe), `POST /api/webhook` (firma verificata, salva l'ordine, segna le disdette).
+- `../_data/catalogo.json` prezzi e tipo di ogni box (PREZZI DI PROVA), letto sia da /negozio/ sia dal Worker.
+- Il carrello sta in `_pages/negozio.md` + `assets/js/carrello.js` (localStorage). Il pulsante Paga si accende quando `_data/negozio.yml` ha `worker_url`.
+- `worker/src/index.js` API: `GET /api/box`, `POST /api/checkout` (body `{"items":[{"id":"caffe-e-te","qty":2}]}` -> `{"url": ...}` di Stripe), `POST /api/webhook` (firma verificata, salva l'ordine, segna le disdette).
 - `worker/schema.sql` tabella `ordini`. `worker/wrangler.toml` config.
 
 ## Per metterlo online (servono un account Cloudflare e uno Stripe)

@@ -1,0 +1,11 @@
+{
+ "_nota": "PREZZI DI PROVA, da decidere. Fonte UNICA: la leggono la pagina /negozio/ (Jekyll) e il Worker. prezzo_centesimi = euro x 100. tipo = abbonamento (ricorrente) oppure singola. Abbonamenti: intervallo = month|week|year e ogni = ogni quanti intervalli. PUNTO CRITICO: gli abbonamenti nello stesso carrello devono avere lo stesso intervallo (regola Stripe) e la pagina scrive '/ mese' per tutti.",
+ "box": [
+  {"id": "dispensa-italiana", "nome": "Box Dispensa Italiana", "descrizione": "Prodotti artigianali italiani scelti da noi, ogni mese.", "tipo": "abbonamento", "prezzo_centesimi": 2900, "intervallo": "month", "ogni": 1},
+  {"id": "caffe-e-te", "nome": "Box Caffè e Tè", "descrizione": "Caffè e tè freschi, per non restare mai senza.", "tipo": "abbonamento", "prezzo_centesimi": 2400, "intervallo": "month", "ogni": 1},
+  {"id": "casa-eco", "nome": "Box Casa Eco", "descrizione": "Detersivi e prodotti per la casa a ricarica.", "tipo": "abbonamento", "prezzo_centesimi": 3200, "intervallo": "month", "ogni": 1},
+  {"id": "benessere", "nome": "Box Benessere", "descrizione": "Cura del corpo e relax, con novità da provare.", "tipo": "abbonamento", "prezzo_centesimi": 3500, "intervallo": "month", "ogni": 1},
+  {"id": "regalo-3-mesi", "nome": "Abbonamento regalo 3 mesi", "descrizione": "Tre mesi di box da regalare, pagamento unico.", "tipo": "singola", "prezzo_centesimi": 8400},
+  {"id": "box-stagione", "nome": "Box di stagione", "descrizione": "Una box singola per feste e ricorrenze.", "tipo": "singola", "prezzo_centesimi": 3900}
+ ]
+}

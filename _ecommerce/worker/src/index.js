@@ -1,12 +1,14 @@
-// Worker box-ecommerce: checkout Stripe + webhook ordini su D1.
+// Worker box-ecommerce: checkout Stripe (carrello con quantita') + webhook ordini su D1.
 // PUNTI CRITICI
 // 1) Il webhook legge il corpo GREZZO (request.text()) prima di qualsiasi parse: la firma Stripe e' calcolata sul testo esatto.
-// 2) Prezzi e importi si leggono SEMPRE da catalogo.json qui nel Worker, mai dal browser.
+// 2) Prezzi e importi si leggono SEMPRE da _data/catalogo.json qui nel Worker, mai dal browser. Dal browser arrivano solo id e quantita'.
 // 3) Ordini idempotenti: INSERT OR IGNORE sull'id della sessione (Stripe puo' reinviare lo stesso evento).
 // 4) Segreti con "wrangler secret put", MAI in wrangler.toml. SITO_URL deve finire con "/".
-import CATALOGO from "../../catalogo.json";
+// 5) Carrello con abbonamenti: Stripe vuole lo stesso intervallo per tutti gli abbonamenti (oggi tutti mensili). Le box singole si aggiungono alla prima fattura.
+import CATALOGO from "../../../_data/catalogo.json";
 
 const enc = new TextEncoder();
+const MAX_QTY = 20;
 
 const CORS = (env) => ({
   "Access-Control-Allow-Origin": env.SITO_ORIGIN,
@@ -28,26 +30,43 @@ async function checkout(request, env) {
   } catch {
     return risposta({ errore: "JSON non valido" }, 400, env);
   }
-  const box = CATALOGO.box.find((b) => b.id === dati.id);
-  if (!box) return risposta({ errore: "Box inesistente" }, 404, env);
+  // Accetta {items:[{id,qty}]} (carrello) oppure {id} (singola box).
+  const richiesti = Array.isArray(dati.items) ? dati.items : dati.id ? [{ id: dati.id, qty: 1 }] : [];
+  if (!richiesti.length || richiesti.length > 10) return risposta({ errore: "Carrello vuoto o troppo grande" }, 400, env);
 
-  const abb = box.tipo === "abbonamento";
+  const righe = [];
+  for (const r of richiesti) {
+    const box = CATALOGO.box.find((b) => b.id === r.id);
+    const qty = Math.floor(Number(r.qty));
+    if (!box) return risposta({ errore: "Box inesistente: " + r.id }, 404, env);
+    if (!(qty >= 1 && qty <= MAX_QTY)) return risposta({ errore: "Quantita' non valida" }, 400, env);
+    righe.push({ box, qty });
+  }
+  const abbonamenti = righe.filter((x) => x.box.tipo === "abbonamento");
+  const intervalli = new Set(abbonamenti.map((x) => x.box.intervallo + "/" + x.box.ogni));
+  if (intervalli.size > 1) return risposta({ errore: "Abbonamenti con ritmi diversi: ordinali separatamente" }, 400, env);
+  const abb = abbonamenti.length > 0;
+
   const p = new URLSearchParams();
   p.set("mode", abb ? "subscription" : "payment");
   p.set("locale", "it");
   p.set("success_url", env.SITO_URL + "grazie/");
-  p.set("cancel_url", env.SITO_URL + "servizi/");
-  p.set("line_items[0][quantity]", "1");
-  p.set("line_items[0][price_data][currency]", "eur");
-  p.set("line_items[0][price_data][unit_amount]", String(box.prezzo_centesimi));
-  p.set("line_items[0][price_data][product_data][name]", box.nome);
-  if (abb) {
-    p.set("line_items[0][price_data][recurring][interval]", box.intervallo);
-    p.set("line_items[0][price_data][recurring][interval_count]", String(box.ogni));
-    p.set("subscription_data[metadata][box_id]", box.id);
-  }
+  p.set("cancel_url", env.SITO_URL + "negozio/");
+  righe.forEach(({ box, qty }, i) => {
+    const k = "line_items[" + i + "]";
+    p.set(k + "[quantity]", String(qty));
+    p.set(k + "[price_data][currency]", "eur");
+    p.set(k + "[price_data][unit_amount]", String(box.prezzo_centesimi));
+    p.set(k + "[price_data][product_data][name]", box.nome);
+    if (box.tipo === "abbonamento") {
+      p.set(k + "[price_data][recurring][interval]", box.intervallo);
+      p.set(k + "[price_data][recurring][interval_count]", String(box.ogni));
+    }
+  });
+  const elenco = righe.map(({ box, qty }) => box.id + ":" + qty).join(",");
   p.set("shipping_address_collection[allowed_countries][0]", "IT");
-  p.set("metadata[box_id]", box.id);
+  p.set("metadata[box_ids]", elenco);
+  if (abb) p.set("subscription_data[metadata][box_ids]", elenco);
 
   const r = await fetch("https://api.stripe.com/v1/checkout/sessions", {
     method: "POST",
@@ -100,7 +119,7 @@ async function webhook(request, env) {
       .bind(
         s.id,
         (s.customer_details && s.customer_details.email) || null,
-        (s.metadata && s.metadata.box_id) || null,
+        (s.metadata && s.metadata.box_ids) || null,
         s.amount_total || 0,
         s.currency || "eur",
         s.subscription || null,

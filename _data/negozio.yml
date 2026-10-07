@@ -1,0 +1,3 @@
+# URL del Worker Cloudflare, senza "/" finale (es. https://box-ecommerce.xxx.workers.dev).
+# Vuoto = pagamento non ancora collegato: il carrello funziona ma il pulsante Paga resta spento.
+worker_url: ""
