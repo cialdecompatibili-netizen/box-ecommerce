@@ -206,7 +206,7 @@
         var m = f.text.match(/^ecommerce:[ \t]*(\S+)/m), on = !!m && m[1].toLowerCase() === 'true', d = document.createElement('div'), mn = M();
         d.className = 'card';
         d.innerHTML = '<h3>E-commerce</h3><label style="display:flex;gap:8px;align-items:center;font-weight:400"><input type="checkbox" id="c_ecommerce" style="width:auto"' + (on ? ' checked' : '') + '> Abilita e-commerce</label>' +
-          '<small>Acceso = il Negozio compare nel menu del sito, con carrello e pagine prodotto. Spento = Negozio, carrello e pagine prodotto spariscono dal sito (prodotti e categorie restano salvati). Dopo Salva serve il deploy (2-3 minuti).</small>' +
+          '<small>Acceso = il Negozio compare nel menu del sito, con carrello e pagine prodotto. Spento = Negozio, carrello, pagine prodotto e il gruppo E-commerce qui nell\u0027admin spariscono (prodotti e categorie restano salvati: riaccendendo ritrovi tutto com\u0027era). Dopo Salva serve il deploy (2-3 minuti).</small>' +
           '<p><button class="btn primary" onclick="A.ecToggle()">Salva e-commerce</button></p>';
         mn.insertBefore(d, mn.children[2] || null);
       }, function () { /* config illeggibile: Impostazioni funziona lo stesso, senza la scheda */ });
@@ -219,7 +219,22 @@
       if (/^ecommerce:/m.test(t)) t = t.replace(/^(ecommerce:[ \t]*)\S+/m, function (_q, a) { return a + val; });
       else { var eo = /\r\n/.test(t) ? '\r\n' : '\n'; t = t + (/\n$/.test(t) ? '' : eo) + 'ecommerce: ' + val + eo; }
       if (t === f.text) return A.toast('Nessuna modifica');
-      return A.putFile('_config.yml', t, f.sha, 'admin: e-commerce ' + (val === 'true' ? 'acceso' : 'spento')).then(function () { A.toast('Salvato'); A.go('settings'); });
+      return A.putFile('_config.yml', t, f.sha, 'admin: e-commerce ' + (val === 'true' ? 'acceso' : 'spento')).then(function () { A.ecShow(val === 'true'); A.toast('Salvato'); A.go('settings'); });
     });
   });
+
+  /* ---------------- MENU ADMIN: gruppo "E-commerce" nascosto se spento ----------------
+     PUNTI CRITICI: (1) Spento = sparisce il gruppo E-commerce (Prodotti, Categorie prodotti) dal menu a sinistra, insieme al sito. I DATI NON SI TOCCANO:
+     _data/catalogo.json resta com'e', quindi riaccendendo ritrovi prodotti e categorie identici (un click, nessuna perdita). (2) Lo stato si legge da _config.yml
+     (stessa regola del plugin: solo `ecommerce: true` accende) una volta al primo A.go dopo il login, e si aggiorna subito dopo "Salva e-commerce".
+     (3) Il gruppo ha data-g="ecommerce" in index.html: se lo rinomini, cambia anche qui. */
+  A.ecShow = function (on) { var g = document.querySelector('.grp[data-g="ecommerce"]'); if (g) g.style.display = on ? '' : 'none'; };
+  var ecSynced = false, goOrig = A.go;
+  A.go = function () {
+    if (!ecSynced) {
+      ecSynced = true;
+      A.getFile('_config.yml').then(function (f) { var m = f.text.match(/^ecommerce:[ \t]*(\S+)/m); A.ecShow(!!m && m[1].toLowerCase() === 'true'); }, function () { /* config illeggibile: il gruppo resta com'e' */ });
+    }
+    return goOrig.apply(this, arguments);
+  };
 })(A);
