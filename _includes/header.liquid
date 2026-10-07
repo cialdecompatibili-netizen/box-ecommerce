@@ -38,20 +38,24 @@
         {% comment %}
           CARRELLO NEL MENU (E-commerce, stile PrestaShop). Compare solo con ecommerce: true (admin > Impostazioni > Abilita e-commerce).
           PUNTI CRITICI
-          1) Sta FUORI da .navbar-collapse, subito prima dell'hamburger: su mobile resta sempre visibile a sinistra delle tre lineette
-             (margin-left:auto), su desktop (>=576px) CSS lo sposta dopo il menu con order:3 (vedi assets/css/negozio.css).
-          2) data-prezzi = mappa id:centesimi dei prodotti VISIBILI di _data/catalogo.json (separatori : e ;). Serve a contare e sommare in tutte le
-             pagine senza caricare il catalogo; un id fuori da questa lista non e' contato. Gli id sono solo a-z 0-9 -, quindi : e ; sono sicuri.
+          1) Sta FUORI da .navbar-collapse, subito DOPO il nome del sito (brand), a sinistra, a ogni larghezza (come PrestaShop: carrello vicino al logo).
+             CSS: margin-right:auto sull'wrapper .nz-cartw tiene l'hamburger a destra su mobile (vedi assets/css/negozio.css). NON spostarlo a destra.
+          2) data-catalogo = JSON {id,p=centesimi,n=nome} dei prodotti VISIBILI di _data/catalogo.json. Serve a contare, sommare e mostrare l'anteprima
+             (passando il mouse) in tutte le pagine senza caricare il catalogo; un id fuori da questa lista non e' contato. Va sempre passato da | escape
+             (e' dentro un attributo) e i nomi da | jsonify.
           3) Il numero e' scritto da assets/js/carrello.js (localStorage): nell'HTML statico e' (0). Lo script e il CSS si caricano QUI, una volta sola,
              e non vanno rimessi nelle singole pagine.
           4) Il link va a /negozio/#carrello (la sezione carrello della pagina Negozio).
         {% endcomment %}
-        {% capture nz_prezzi %}{% for b in site.data.catalogo.box %}{% unless b.visibile == false %}{{ b.id }}:{{ b.prezzo_centesimi }};{% endunless %}{% endfor %}{% endcapture %}
+        {% capture nz_cat %}{% for b in site.data.catalogo.box %}{% unless b.visibile == false %}{"id":{{ b.id | jsonify }},"p":{{ b.prezzo_centesimi | default: 0 | jsonify }},"n":{{ b.nome | jsonify }}},{% endunless %}{% endfor %}{% endcapture %}
         <link rel="stylesheet" href="{{ '/assets/css/negozio.css' | relative_url }}">
-        <a id="nz-cart" class="nz-cart" href="{{ '/negozio/#carrello' | relative_url }}" data-prezzi="{{ nz_prezzi }}" aria-label="Carrello">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3.5h2.6l2.3 11.2a1.6 1.6 0 0 0 1.6 1.3h8.5a1.6 1.6 0 0 0 1.6-1.2l1.5-6.8H6"/></svg>
-          <span class="nz-n">(0)</span>
-        </a>
+        <div class="nz-cartw">
+          <a id="nz-cart" class="nz-cart" href="{{ '/negozio/#carrello' | relative_url }}" data-catalogo="{{ nz_cat | escape }}" aria-label="Carrello">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2.5 3.5h2.6l2.3 11.2a1.6 1.6 0 0 0 1.6 1.3h8.5a1.6 1.6 0 0 0 1.6-1.2l1.5-6.8H6"/></svg>
+            <span class="nz-n">(0)</span>
+          </a>
+          <div class="nz-prev" id="nz-prev"></div>
+        </div>
         <script src="{{ '/assets/js/carrello.js' | relative_url }}" defer></script>
       {% endif %}
       <!-- Navbar Toggle -->

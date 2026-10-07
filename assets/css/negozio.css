@@ -30,20 +30,19 @@
 
 /* ===== CARRELLO NEL MENU (stile PrestaShop) + finestra "prodotto aggiunto" =====
    PUNTI CRITICI
-   1) .nz-cart e' scritto in _includes/header.liquid FUORI da .navbar-collapse. Mobile: margin-left:auto lo spinge a destra, subito a sinistra dell'hamburger
-      (ordine nel DOM: brand, carrello, hamburger). Da 576px in su (navbar-expand-sm, hamburger nascosto) order:3 lo mette dopo il menu, a destra.
-      Se cambi il breakpoint del tema (navbar-expand-sm) cambia anche il 576px qui sotto.
+   1) .nz-cartw e' scritto in _includes/header.liquid FUORI da .navbar-collapse, subito dopo il nome del sito: il carrello sta SEMPRE a sinistra, accanto al titolo
+      (come PrestaShop). margin-right:auto assorbe lo spazio libero e tiene l'hamburger a destra su mobile; su desktop il menu (flex-grow) segue.
    2) Le regole fuori da #negozio valgono su TUTTE le pagine: non usare selettori generici (solo classi .nz-*). Il <dialog> e' creato da carrello.js
       e finisce in <body>, quindi NON e' dentro #negozio: per questo le variabili --nz-* sono definite anche su :root (prima riga del file).
    3) purgecss (deploy.yml) toglie le classi non trovate: purgecss.config.js ha in safelist /^nz-/ per le classi create da JS (nz-bump, nz-pieno, nz-dialog...). */
-.nz-cart { display: inline-flex; align-items: center; gap: .3rem; margin-left: auto; padding: .35rem .5rem; line-height: 1; color: var(--nz-testo); text-decoration: none; }
+.nz-cartw { position: relative; margin-right: auto; margin-left: .5rem; }
+.nz-cart { display: inline-flex; align-items: center; gap: .3rem; padding: .35rem .5rem; line-height: 1; color: var(--nz-testo); text-decoration: none; }
 .nz-cart:hover, .nz-cart:focus-visible { color: var(--nz-tema); text-decoration: none; }
 .nz-cart svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .nz-cart .nz-n { font-size: .9rem; font-variant-numeric: tabular-nums; }
 .nz-cart.nz-pieno { color: var(--nz-tema); }
 .nz-cart.nz-bump svg { animation: nz-bump .45s ease; }
 @keyframes nz-bump { 30% { transform: scale(1.35); } 60% { transform: scale(.92); } }
-@media (min-width: 576px) { .nz-cart { order: 3; margin-left: .75rem; } }
 @media (prefers-reduced-motion: reduce) { .nz-cart.nz-bump svg { animation: none; } }
 
 .nz-dialog { border: 1px solid var(--nz-bordo); border-radius: 14px; padding: 0; background: var(--nz-sfondo); color: var(--nz-testo); width: min(30rem, calc(100% - 2rem)); box-shadow: 0 12px 40px rgba(0, 0, 0, .25); }
@@ -57,3 +56,13 @@
 .nz-dlg-tot p { margin: 0 0 .2rem; }
 .nz-dlg .nz-totale { font-size: 1.25rem; font-weight: 700; }
 .nz-dlg-az { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: flex-end; margin-top: 1rem; }
+
+/* Anteprima al passaggio del mouse (.nz-prev, come .blockcart .body di PrestaShop). Solo con mouse (hover:hover) e da 576px; su touch il tap va alla pagina carrello.
+   Vuota (carrello a zero) = nessun contenuto, quindi non compare nemmeno il riquadro. */
+.nz-prev { display: none; position: absolute; top: 100%; left: 0; z-index: 1050; min-width: 17rem; max-width: 90vw; padding: .8rem 1rem; border: 1px solid var(--nz-bordo); border-radius: 12px; background: var(--nz-sfondo); color: var(--nz-testo); box-shadow: 0 8px 28px rgba(0, 0, 0, .2); }
+.nz-prev ul { list-style: none; margin: 0 0 .6rem; padding: 0; }
+.nz-prev li { display: flex; justify-content: space-between; gap: 1rem; padding: .2rem 0; font-size: .9rem; }
+.nz-prev-tot { display: flex; justify-content: space-between; margin: 0 0 .7rem; padding-top: .5rem; border-top: 1px solid var(--nz-bordo); }
+@media (hover: hover) and (min-width: 576px) {
+  .nz-cartw:hover .nz-prev:not(:empty), .nz-cartw:focus-within .nz-prev:not(:empty) { display: block; }
+}

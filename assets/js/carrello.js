@@ -3,7 +3,7 @@
 // PUNTI CRITICI
 // 1) Questo file e' caricato UNA volta da _includes/header.liquid (solo se ecommerce: true). NON rimettere <script src=carrello.js> nelle pagine:
 //    il guard window.__nzCarrello evita il doppio avvio, ma il tag in piu' non serve.
-// 2) Il contatore e i totali usano la mappa id:prezzo scritta dal header in #nz-cart[data-prezzi] (stessa fonte: _data/catalogo.json). Gli id non piu'
+// 2) Il contatore e i totali usano la JSON id/prezzo/nome scritto dal header in #nz-cart[data-catalogo] (stessa fonte: _data/catalogo.json). Gli id non piu'
 //    in catalogo (prodotto nascosto/eliminato) NON si contano. I prezzi mostrati sono solo indicativi: il Worker li rilegge da solo al pagamento.
 // 3) Su /grazie/ il carrello viene svuotato (pagamento completato).
 // 4) Il pagamento parte solo se _data/negozio.yml ha worker_url; altrimenti il pulsante resta spento.
@@ -46,11 +46,16 @@
   /* ---------- icona nel menu + contatore ---------- */
   var link = document.getElementById("nz-cart");
   var prezzi = {}; // id -> centesimi (dal header)
-  if (link && link.dataset.prezzi) {
-    link.dataset.prezzi.split(";").forEach(function (v) {
-      var p = v.split(":");
-      if (p[0] && p[1]) prezzi[p[0]] = Number(p[1]);
-    });
+  var nomi = {}; // id -> nome (dal header, per l'anteprima)
+  if (link && link.dataset.catalogo) {
+    try {
+      JSON.parse("[" + link.dataset.catalogo + "null]").forEach(function (x) {
+        if (x && x.id) {
+          prezzi[x.id] = Number(x.p) || 0;
+          nomi[x.id] = String(x.n || x.id);
+        }
+      });
+    } catch (e) {}
   }
   function riepilogo(c) {
     var n = 0;
@@ -63,12 +68,37 @@
     });
     return { n: n, tot: tot };
   }
+  /* Anteprima al passaggio del mouse (come .blockcart .body di PrestaShop): righe "q x nome", totale, pulsante. Solo CSS la mostra (desktop con mouse). */
+  function anteprima(r) {
+    var p = document.getElementById("nz-prev");
+    if (!p) return;
+    p.innerHTML = "";
+    if (!r.n) return; // carrello vuoto: nessuna anteprima (resta nascosta anche da CSS)
+    var c = leggi();
+    var ul = el("ul");
+    Object.keys(c).forEach(function (id) {
+      if (prezzi[id] === undefined || !(c[id] > 0)) return;
+      var li = el("li");
+      li.appendChild(el("span", c[id] + " \u00d7 " + nomi[id]));
+      li.appendChild(el("span", euro.format((prezzi[id] * c[id]) / 100)));
+      ul.appendChild(li);
+    });
+    var tot = el("p", undefined, "nz-prev-tot");
+    tot.appendChild(el("span", "Totale"));
+    tot.appendChild(el("strong", euro.format(r.tot / 100)));
+    var vai = el("a", "Vai al carrello", "btn btn-primary btn-sm");
+    vai.href = link.getAttribute("href");
+    [ul, tot, vai].forEach(function (n) {
+      p.appendChild(n);
+    });
+  }
   function badge(salto) {
     if (!link) return;
     var r = riepilogo(leggi());
     link.querySelector(".nz-n").textContent = "(" + r.n + ")";
     link.classList.toggle("nz-pieno", r.n > 0);
     link.setAttribute("aria-label", "Carrello: " + r.n + (r.n === 1 ? " prodotto" : " prodotti"));
+    anteprima(r);
     if (salto) {
       link.classList.remove("nz-bump");
       void link.offsetWidth; // riavvia l'animazione
