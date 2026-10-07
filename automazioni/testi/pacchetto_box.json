@@ -1,0 +1,207 @@
+{
+ "home": {
+  "pagine": [
+   {
+    "pagina": "_pages/home.md",
+    "front": {
+     "seo_title": "{title} | Box ricorrenti in abbonamento",
+     "seo_description": "Box ricorrenti in abbonamento a casa tua. Dispensa italiana, caffè e tè, casa eco e benessere, con pausa o disdetta quando vuoi."
+    },
+    "righe": [
+     {
+      "inizia_con": [
+       "## Web Agency",
+       "## Birra artigianale",
+       "## Gelato al cioccolato",
+       "## Box ricorrenti"
+      ],
+      "nuova": "## Box ricorrenti, scelte per te e consegnate a casa."
+     },
+     {
+      "inizia_con": [
+       "Comunicazione, web marketing",
+       "Produciamo birre non filtrate",
+       "Prepariamo gelati",
+       "Scegli la tua box"
+      ],
+      "nuova": "Scegli la tua box, decidi ogni quanto riceverla e lascia il resto a noi. Prodotti selezionati, spedizione in tutta Italia, pausa o disdetta quando vuoi."
+     },
+     {
+      "inizia_con": [
+       "Un team unico di professionisti",
+       "Il birrificio è aperto",
+       "La gelateria è aperta",
+       "Puoi scegliere una box"
+      ],
+      "nuova": "Puoi scegliere una box a sorpresa per scoprire cose nuove, oppure una box di ricarica con i prodotti che usi sempre. Per un regalo o per l'ufficio c'è l'abbonamento su misura."
+     },
+     {
+      "inizia_con": [
+       "**Vuoi far crescere il tuo business?**",
+       "**Vuoi assaggiare le nostre birre?**",
+       "**Vuoi assaggiare i nostri gelati?**",
+       "**Vuoi provare una box?**"
+      ],
+      "nuova": "**Vuoi provare una box?** Scrivici e ti consigliamo quella giusta per te, per un regalo o per il tuo team."
+     }
+    ]
+   },
+   {
+    "pagina": "_pages/contatti.md",
+    "righe": [
+     {
+      "inizia_con": [
+       "<p class=\"cf-intro\">"
+      ],
+      "nuova": "<p class=\"cf-intro\">Vuoi attivare un abbonamento, fare un regalo o creare una box per l'ufficio? Scrivici e ti rispondiamo entro un giorno.</p>"
+     }
+    ]
+   }
+  ]
+ },
+ "servizi": [
+  {
+   "titolo": "Box Dispensa Italiana",
+   "gruppo": "Box in abbonamento",
+   "descrizione": "Ogni mese prodotti artigianali italiani scelti da noi.",
+   "in_home": true,
+   "testo": "## Box Dispensa Italiana\n\nOgni mese una selezione di prodotti artigianali italiani, da piccoli produttori scelti uno per uno. Pasta, conserve, condimenti e dolci da dispensa, con la scheda del produttore dentro la scatola.\n\nSi riceve ogni mese oppure ogni due mesi. Puoi mettere in pausa o disdire quando vuoi."
+  },
+  {
+   "titolo": "Box Caffè e Tè",
+   "gruppo": "Box in abbonamento",
+   "descrizione": "Caffè e tè che finiscono sempre, a casa ogni mese.",
+   "in_home": true,
+   "testo": "## Box Caffè e Tè\n\nÈ la box di ricarica per chi non vuole restare senza. Scegli caffè in grani, macinato o cialde, oppure tè in foglia, e decidi ogni quante settimane riceverli.\n\nOgni consegna ha prodotti freschi di tostatura e puoi cambiare gusto quando vuoi."
+  },
+  {
+   "titolo": "Box Casa Eco",
+   "gruppo": "Box in abbonamento",
+   "descrizione": "Detersivi e prodotti per la casa a ricarica, con meno plastica.",
+   "in_home": true,
+   "testo": "## Box Casa Eco\n\nDetersivi, sapone e prodotti per la casa in formato ricarica, con meno imballaggi e meno plastica.\n\nRicevi quello che finisce, quando finisce. Basta dirci ogni quanto vuoi la box e che prodotti usi di più."
+  },
+  {
+   "titolo": "Box Benessere",
+   "gruppo": "Box in abbonamento",
+   "descrizione": "Cura del corpo e relax, con prodotti nuovi da provare ogni mese.",
+   "in_home": false,
+   "testo": "## Box Benessere\n\nOgni mese prodotti per la cura del corpo e per il relax, tra novità da provare e formati interi da usare davvero.\n\nÈ una box a sorpresa, ma puoi indicare le tue preferenze e gli ingredienti da evitare."
+  },
+  {
+   "titolo": "Abbonamento regalo",
+   "gruppo": "Da regalare",
+   "descrizione": "Regala 3, 6 o 12 mesi di box a chi vuoi.",
+   "in_home": true,
+   "testo": "## Abbonamento regalo\n\nRegala una box per 3, 6 o 12 mesi. Scegli la box, scrivi un messaggio e decidi quando far partire la prima consegna.\n\nChi riceve il regalo può cambiare indirizzo e preferenze senza costi."
+  },
+  {
+   "titolo": "Box di stagione",
+   "gruppo": "Da regalare",
+   "descrizione": "Una box singola per Natale, Pasqua o una ricorrenza.",
+   "in_home": false,
+   "testo": "## Box di stagione\n\nUna box singola, senza abbonamento, per Natale, Pasqua, compleanni e ricorrenze. Scegli il contenuto e il biglietto di auguri.\n\nSe poi piace, si può trasformare in abbonamento."
+  },
+  {
+   "titolo": "Box per l'ufficio",
+   "gruppo": "Per aziende",
+   "descrizione": "Caffè, tè e snack ricorrenti per il tuo team.",
+   "in_home": false,
+   "testo": "## Box per l'ufficio\n\nCaffè, tè, snack e prodotti per la pausa, consegnati con regolarità in ufficio. Le quantità si adattano al numero di persone.\n\nFattura mensile e un solo referente per modifiche e ordini extra."
+  },
+  {
+   "titolo": "Box di benvenuto per il team",
+   "gruppo": "Per aziende",
+   "descrizione": "Una box personalizzata per nuovi colleghi e clienti.",
+   "in_home": false,
+   "testo": "## Box di benvenuto per il team\n\nUna box con prodotti selezionati e il tuo biglietto, da spedire a nuovi colleghi, clienti o collaboratori.\n\nPuoi ordinarla una volta sola oppure programmare l'invio ogni volta che serve."
+  }
+ ],
+ "post": [
+  {
+   "titolo": "Box a sorpresa o box di ricarica come scegliere",
+   "categoria": "guide",
+   "descrizione": "Due modi di ricevere una box e a chi serve ciascuno.",
+   "testo": "Le box in abbonamento sono di due tipi e conviene scegliere con calma.\n\n## La box a sorpresa\n\nSai solo la categoria, il resto lo scopri all'apertura. Va bene se ti piace provare cose nuove e fare regali.\n\n## La box di ricarica\n\nContiene i prodotti che usi comunque, come caffè, tè o detersivi. Va bene se vuoi non restare senza e risparmiare tempo.\n\n## Come scegliere\n\nPartiamo da una domanda semplice. Vuoi scoprire o vuoi non pensarci più? Nel primo caso la sorpresa, nel secondo la ricarica."
+  },
+  {
+   "titolo": "Pausa e disdetta senza stress",
+   "categoria": "abbonamenti",
+   "descrizione": "Come gestire il ritmo delle consegne senza sentirsi vincolati.",
+   "testo": "Un abbonamento deve stare comodo. Per questo le consegne si possono mettere in pausa, spostare o fermare.\n\n## Cambiare il ritmo\n\nSe ti avanza qualcosa puoi passare da una consegna al mese a una ogni due mesi.\n\n## Mettere in pausa\n\nPartenza per le vacanze, periodo pieno di impegni o dispensa già piena. Si ferma e si riparte quando vuoi.\n\n## Disdire\n\nSe la box non fa per te la disdetta è semplice e senza penali."
+  }
+ ],
+ "progetti": [
+  {
+   "titolo": "Box del mese",
+   "descrizione": "Ogni mese una selezione nuova con un tema diverso.",
+   "in_home": true,
+   "testo": "Ogni mese scegliamo un tema, come la colazione, l'aperitivo o la cucina di una regione, e lo trasformiamo in una selezione di prodotti.\n\nIl tema del mese si annuncia qualche giorno prima della spedizione."
+  },
+  {
+   "titolo": "Box regalo di stagione",
+   "descrizione": "Edizioni limitate per le feste, da regalare o da tenere.",
+   "in_home": true,
+   "testo": "Per Natale, Pasqua e le altre feste prepariamo edizioni limitate, con confezione regalo e biglietto.\n\nSi ordinano con anticipo e si spediscono in tutta Italia."
+  }
+ ],
+ "gruppi": [
+  "Box in abbonamento",
+  "Da regalare",
+  "Per aziende"
+ ],
+ "menu": {
+  "agenzia": "Box"
+ },
+ "chi_siamo": {
+  "pagina": {
+   "titolo": "chi siamo",
+   "permalink": "/chi-siamo/",
+   "description": "Box ricorrenti in abbonamento con prodotti selezionati, ricariche per la casa, regali e box per le aziende.",
+   "nav": false
+  },
+  "contatti": {
+   "whatsapp": "",
+   "link_preventivo": "/contatti/",
+   "testo_whatsapp": "Scrivici su WhatsApp",
+   "testo_preventivo": "Attiva una box",
+   "testo_servizi": "Scopri le box",
+   "link_servizi": "/servizi/"
+  },
+  "stile": {
+   "prefisso_css": "cs",
+   "larghezza_max": "960px",
+   "raggio": "12px"
+  },
+  "sezioni": [
+   {
+    "tipo": "hero",
+    "eyebrow": "Chi siamo",
+    "titolo": "Box ricorrenti, pensate per stare comode nella tua vita.",
+    "paragrafi": [
+      "Selezioniamo prodotti, li impacchettiamo e li spediamo con il ritmo che scegli tu. Una box a sorpresa per scoprire, una di ricarica per non restare mai senza."
+    ],
+    "bottoni": [
+     "whatsapp",
+     "preventivo",
+     "servizi"
+    ]
+   },
+   {
+    "tipo": "finale",
+    "titolo": "Vuoi provare una box?",
+    "testo": "Scrivici e ti aiutiamo a scegliere quella giusta, per te, per un regalo o per il tuo team.",
+    "bottoni": [
+     "whatsapp",
+     "preventivo",
+     "servizi"
+    ]
+   }
+  ]
+ },
+ "svuota_cartelle": [
+  "_teachings",
+  "_books"
+ ],
+ "config_descrizione": "Box ricorrenti in abbonamento con prodotti selezionati, ricariche per la casa, abbonamenti regalo e box per le aziende."
+}
