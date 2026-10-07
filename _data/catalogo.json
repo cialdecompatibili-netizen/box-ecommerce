@@ -1,16 +1,16 @@
 {
  "_nota": "PREZZI E PRODOTTI DI PROVA (demo). Fonte UNICA: la leggono /negozio/, le pagine prodotto (_plugins/ecommerce.rb), il Worker e l'admin (E-commerce). prezzo_centesimi = euro x 100. tipo = abbonamento (ricorrente) oppure singola. Abbonamenti: intervallo = month|week|year e ogni = ogni quanti intervalli. visibile=false nasconde il prodotto (niente pagina, niente acquisto). PUNTO CRITICO: gli abbonamenti nello stesso carrello devono avere lo stesso ritmo (regola Stripe).",
  "categorie": [
-  {"id": "abbonamenti", "nome": "Box in abbonamento", "icona": "📦"},
-  {"id": "casa", "nome": "Casa e benessere", "icona": "🌿"},
-  {"id": "regali", "nome": "Regali", "icona": "🎁"}
+  {"id":"casa","nome":"Casa e benessere","icona":"🌿"},
+  {"id":"abbonamenti","nome":"Box in abbonamento","icona":"📦"},
+  {"id":"regali","nome":"Regali","icona":"🎁"}
  ],
  "box": [
-  {"id": "dispensa-italiana", "nome": "Box Dispensa Italiana", "descrizione": "Prodotti artigianali italiani scelti da noi, ogni mese.", "categoria": "abbonamenti", "icona": "🍝", "tipo": "abbonamento", "prezzo_centesimi": 2900, "intervallo": "month", "ogni": 1, "visibile": true},
-  {"id": "caffe-e-te", "nome": "Box Caffè e Tè", "descrizione": "Caffè e tè freschi, per non restare mai senza.", "categoria": "abbonamenti", "icona": "☕", "tipo": "abbonamento", "prezzo_centesimi": 2400, "intervallo": "month", "ogni": 1, "visibile": true},
-  {"id": "casa-eco", "nome": "Box Casa Eco", "descrizione": "Detersivi e prodotti per la casa a ricarica.", "categoria": "casa", "icona": "🌿", "tipo": "abbonamento", "prezzo_centesimi": 3200, "intervallo": "month", "ogni": 1, "visibile": true},
-  {"id": "benessere", "nome": "Box Benessere", "descrizione": "Cura del corpo e relax, con novità da provare.", "categoria": "casa", "icona": "🧴", "tipo": "abbonamento", "prezzo_centesimi": 3500, "intervallo": "month", "ogni": 1, "visibile": true},
-  {"id": "regalo-3-mesi", "nome": "Abbonamento regalo 3 mesi", "descrizione": "Tre mesi di box da regalare, pagamento unico.", "categoria": "regali", "icona": "🎁", "tipo": "singola", "prezzo_centesimi": 8400, "visibile": true},
-  {"id": "box-stagione", "nome": "Box di stagione", "descrizione": "Una box singola per feste e ricorrenze.", "categoria": "regali", "icona": "🎄", "tipo": "singola", "prezzo_centesimi": 3900, "visibile": true}
+  {"id":"dispensa-italiana","nome":"Box Dispensa Italiana","descrizione":"Prodotti artigianali italiani scelti da noi, ogni mese.","categoria":"abbonamenti","icona":"🍝","tipo":"abbonamento","prezzo_centesimi":2900,"intervallo":"month","ogni":1,"visibile":true},
+  {"id":"caffe-e-te","nome":"Box Caffè e Tè","descrizione":"Caffè e tè freschi, per non restare mai senza.","categoria":"abbonamenti","icona":"☕","tipo":"abbonamento","prezzo_centesimi":2400,"intervallo":"month","ogni":1,"visibile":true},
+  {"id":"casa-eco","nome":"Box Casa Eco","descrizione":"Detersivi e prodotti per la casa a ricarica.","categoria":"casa","icona":"🌿","tipo":"abbonamento","prezzo_centesimi":3200,"intervallo":"month","ogni":1,"visibile":true},
+  {"id":"benessere","nome":"Box Benessere","descrizione":"Cura del corpo e relax, con novità da provare.","categoria":"casa","icona":"🧴","tipo":"abbonamento","prezzo_centesimi":3500,"intervallo":"month","ogni":1,"visibile":true},
+  {"id":"regalo-3-mesi","nome":"Abbonamento regalo 3 mesi","descrizione":"Tre mesi di box da regalare, pagamento unico.","categoria":"regali","icona":"🎁","tipo":"singola","prezzo_centesimi":8400,"visibile":true},
+  {"id":"box-stagione","nome":"Box di stagione","descrizione":"Una box singola per feste e ricorrenze.","categoria":"regali","icona":"🎄","tipo":"singola","prezzo_centesimi":3900,"visibile":true}
  ]
 }
